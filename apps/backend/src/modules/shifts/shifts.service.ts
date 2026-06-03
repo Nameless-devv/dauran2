@@ -10,8 +10,9 @@ export class ShiftsService {
   async openShift(cashierId: string, openingCash: number): Promise<Shift> {
     const active = await this.repo.findOne({
       where: { cashier: { id: cashierId }, isClosed: false },
+      relations: ['cashier'],
     });
-    if (active) throw new BadRequestException('Shift already open');
+    if (active) return active; // mavjud shiftni davom ettirish
 
     const shift = this.repo.create({
       cashier: { id: cashierId } as any,

@@ -26,6 +26,19 @@ export class ProductsController {
     return this.service.findAll(search);
   }
 
+  // Barkod bo'yicha qidirish: avval lokal DB, keyin Open Food Facts
+  @Get('lookup/:barcode')
+  lookup(@Param('barcode') barcode: string) {
+    return this.service.lookupByBarcode(barcode);
+  }
+
+  // Claude Vision orqali mahsulot rasmini tahlil qilish
+  @Post('recognize')
+  @Roles(Role.ADMIN, Role.MANAGER, Role.CASHIER, Role.STOREKEEPER)
+  recognize(@Body() body: { imageBase64: string; mimeType?: string }) {
+    return this.service.recognizeByImage(body.imageBase64, body.mimeType);
+  }
+
   @Get('barcode/:barcode')
   findByBarcode(@Param('barcode') barcode: string) {
     return this.service.findByBarcode(barcode);

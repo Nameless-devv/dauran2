@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import {
   LayoutDashboard, Package, ShoppingCart, Warehouse,
-  Users, BarChart2, Truck, LogOut, Store,
+  Users, BarChart2, Truck, LogOut, Store, ClipboardList,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/auth.store'
 
@@ -13,6 +13,7 @@ const navItems = [
   { to: '/customers', icon: Users, label: 'Mijozlar' },
   { to: '/reports', icon: BarChart2, label: 'Hisobotlar' },
   { to: '/suppliers', icon: Truck, label: 'Yetkazib beruvchilar' },
+  { to: '/inventory', icon: ClipboardList, label: 'Inventarizatsiya' },
 ]
 
 export function Sidebar() {

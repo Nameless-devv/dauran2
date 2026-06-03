@@ -11,3 +11,5 @@ coverage/
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm
+apps/backend/certs/
+apps/backend/full_products.sql

@@ -93,7 +93,14 @@ function ProductForm({ product, categories, onSave, onCancel }: any) {
 
         <div className="flex gap-3 mt-5">
           <button
-            onClick={() => onSave(form)}
+            onClick={() => {
+              const data = { ...form }
+              // SKU bo'sh bo'lsa barcodeni ishlatamiz
+              if (!data.sku?.trim()) data.sku = data.barcode
+              if (!data.barcode?.trim()) { alert('Shtrix-kod kiritish majburiy'); return }
+              if (!data.name?.trim()) { alert('Nomi kiritish majburiy'); return }
+              onSave(data)
+            }}
             className="flex-1 bg-blue-600 text-white rounded-lg py-2 text-sm font-medium hover:bg-blue-700"
           >
             Saqlash
@@ -132,6 +139,10 @@ export function ProductsPage() {
       queryClient.invalidateQueries({ queryKey: ['products'] })
       setCreating(false)
     },
+    onError: (e: any) => {
+      const msg = e?.response?.data?.message
+      alert(Array.isArray(msg) ? msg.join('\n') : (msg || 'Saqlashda xato'))
+    },
   })
 
   const updateMutation = useMutation({
@@ -139,6 +150,10 @@ export function ProductsPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['products'] })
       setEditing(null)
+    },
+    onError: (e: any) => {
+      const msg = e?.response?.data?.message
+      alert(Array.isArray(msg) ? msg.join('\n') : (msg || 'Saqlashda xato'))
     },
   })
 

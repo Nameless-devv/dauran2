@@ -9,6 +9,7 @@ import { StockPage } from './pages/stock/StockPage'
 import { CustomersPage } from './pages/customers/CustomersPage'
 import { ReportsPage } from './pages/reports/ReportsPage'
 import { SuppliersPage } from './pages/suppliers/SuppliersPage'
+import { InventoryPage } from './pages/inventory/InventoryPage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/reports" element={<ReportsPage />} />
             <Route path="/suppliers" element={<SuppliersPage />} />
+            <Route path="/inventory" element={<InventoryPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
