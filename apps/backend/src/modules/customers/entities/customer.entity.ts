@@ -20,9 +20,6 @@ export class Customer {
   @Column({ type: 'decimal', precision: 14, scale: 2, default: 0 })
   bonusBalance: number;
 
-  @Column({ default: 'regular' })
-  segment: string;
-
   @CreateDateColumn()
   createdAt: Date;
 }

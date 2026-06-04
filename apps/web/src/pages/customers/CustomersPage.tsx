@@ -70,7 +70,6 @@ export function CustomersPage() {
               <tr className="text-left text-gray-500">
                 <th className="px-4 py-3">Ism</th>
                 <th className="px-4 py-3">Telefon</th>
-                <th className="px-4 py-3">Segment</th>
                 <th className="px-4 py-3 text-right">Bonus balans</th>
                 <th className="px-4 py-3">Ro'yxatga olingan</th>
               </tr>
@@ -80,7 +79,6 @@ export function CustomersPage() {
                 <tr key={c.id} className="hover:bg-gray-50">
                   <td className="px-4 py-3 font-medium">{c.name}</td>
                   <td className="px-4 py-3 text-gray-500">{c.phone}</td>
-                  <td className="px-4 py-3 capitalize">{c.segment}</td>
                   <td className="px-4 py-3 text-right font-semibold text-green-600">
                     {Number(c.bonusBalance).toLocaleString()}
                   </td>
